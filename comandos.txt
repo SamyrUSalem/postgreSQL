@@ -1,0 +1,51 @@
+CREATE DATABASE nomedobamco => Usado para realizar a criação do banco de dados
+
+DROP DATABASE nomedobanco => Usado para deletar um banco de dados
+
+\c nomedobanco =. Com esse comando, vc ira se conectar com o banco
+
+CREATE TABLE nomedatabela ( => Dessa forma, será criado uma tabela e depois será necessário criar as colunas dela
+
+* Após usar o comando acima será possível crir as colunas, ex: name VARCHAR (50) UNIQUE NOT NULL, "name" seria o nome da col, o varchar é o tipo dela, os parâmetros unique e not null quer dizer q esse valor é unico não pode ter outro igual e ele é obrigatório pq não pode ser nulo. Quando finalizar é preciso colocar o comando ");" para fechar os parenteses e criar a tabela. *
+
+\d nomedatabela => Será exibido a tabela com os seus campos
+
+DROP TABLE planets; => A tabela será deletada
+
+ALTER 	 nomedatabela ADD COLUMN description text; => Estou alterando a tabela e acrescentando o campo description do tipo text
+
+ALTER TABLE nomedatabela DROP COLUMN description; => Estou alterando a tabela e apagando o campo criado
+
+ALTER TABLE nomedatabela ADD CHECK (nomedocampo > 1); => Estou incluindo um constraint (seria o parâmetro dito anteriormente) na tabela, que seria o check (ele permitira apenas valores maiores que um ser inserido nesse campo)
+
+ALTER TABLE nomedatabela ALTER COLUMN nomedocampo SET DEFAULT true; => Estou inserindo uma valor padrão no campo especificado, no caso ele é do tipo boolean então foi colocado o valor true;
+
+ALTER TABLE nomedatabela RENAME COLUMN nomeatual TO novonome; => Alterando o nome do campo
+
+INSERT INTO nomedatabela (nomedocampo, nomedocampo, nomedocampo, nomedocampo, nomedocampo) VALUES ('dados que vão esta no campo', 'dados que vão esta no campo', 'ldados que vão esta no campo', 'dados que vão esta no campo', 5); => Comando para adicionar valores nos campos, primeiro seleciona os campos que serão acrescentados e depois adicione os valores que irão ser inseridos
+
+SELECT * FROM nomedatabela; => Dessa forma, será selecionado todos os campos da tabela e serão exibidos, caso queira um campo especifico é só trocar o '*' pelo nome do campo.
+
+SELECT * FROM nomedatabelam WHERE nome_do_campo='valor'; => Dessa forma esta sendo feito uma pesquisa, para selecionar todos os campos da tabela aonde possui o valor X
+
+ALTER TABLE planets ADD COLUMN ID SERIAL PRIMARY KEY; => Esse comando seria para o campo da chave primaria, o 'serial' significa que ela não sera preenchida pelo usuario mas será um auto-incremento
+
+ALTER TABLE nomeatual RENAME TO novonome; => Com esse comando, é possível alterar o nome da tabela criada
+
+UPDATE nomedatabela SET nomedocampo = 'valor' WHERE id=1; => Esse comando realiza a troca de um valor dentro da tabela, de acordo com o seu id (q seria a chave primária)
+
+DELETE FROM nomedatabela WHERE id=1; => Dessa forma, uma row sera deletada
+
+CONSTRAINT nomequalquer FOREIGN KEY(campoQueContemAChaveEstrangeira) REFERENCES nomedatabela(id) => Quando for criar a tabela que vai ter uma associação com outra, é necessária criar um campo onde vai armazenar a chave primaria da tabela q vai se conectar, e depois utilizar esse comando para realizar a associação
+
+*E quando for preencher o parte do ID, é necessário apenas informar qual é o id da outra tabela q vc gostaria de conectar, ex: na outra tabea tem um dado com o id=5, ai na tabela atual vc faz referencia a ele, insere o Id na parte do campo q possui a chave estrangeira
+
+Comandos Sequelize :
+
+sequelize db:create => Para criar o banco de dados
+
+sequelize migration:create --name=nomeEscolhido => Esse comando ira criar uma migration
+
+sequelize db:migrate => Esse comando executa a migrate que foi criada
+
+sequelize db:migrate:undo => Esse comando volta atras, então ele desfaz a migrate que acabei de criar é usado caso algo tenha saido errado no momento da criação(no caso, ele esta rodando o método down que foi criado)

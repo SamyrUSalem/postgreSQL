@@ -1,0 +1,16 @@
+Chave primária é um indentificador único de um registro no banco, ela não pode ser nula.
+- Chave primaria simples : Seria apenas uma coluna do registro.
+- Chave primaria composta : Seria duas ou mais colunas do registro
+
+Para realizar uma associação entre tabelas, é usada uma chave estrangeira q seria uma chave primaria q não é originalmente da tabela em si, mas de outra
+
+ORM = É oq faz com que não precise ficar mexendo no SQL, para coletar ou criar informações
+
+Sequelize = é um ORM, o mais popular q tem, vai ser possível realizar a manipulação nos bancos de dados sem necessariamente mexer no SQ, mas usando diretamente o JS
+
+Para começar um projeto com PostgreSQL e o Sequelize, use os comandos abaixo :
+- npm install sequelize pg pg-hstore express
+- npm install -g sequelize-cli
+- sequelize-cli init
+
+migrate => Seria a estrutura q sera usada para manipular os banco de dados    
