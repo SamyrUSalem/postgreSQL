@@ -8,9 +8,32 @@ module.exports = {
         const planet = await Planet.create({ name, position })
         return res.json(planet)
     },
+
     async index(req, res) {//GET
         const planets = await Planet.findAll();
 
         return res.json(planets) //A forma q a resposta terá
+    },
+
+    async put(req, res) {
+        const { name, size, position } = req.body //Dados que serão atualizadas
+        await Planet.update(
+            { name, position, size }, //Referenciando os dados
+            {
+                where: {
+                    id: req.params.id //Vai buscar o id q esta na requisição e ira atualizar um dado especifico
+                }
+            }
+        )
+        return res.send("Atualizado!")
+    },
+
+    async delete(req, res) {
+        await Planet.destroy({ //Dessa maneira, um dado especifico sera deletado
+            where: {
+                id: req.params.id
+            }
+        })
+        return res.send("Deletado!")
     }
 }
